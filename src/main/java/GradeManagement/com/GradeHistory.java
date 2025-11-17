@@ -1,22 +1,27 @@
 package GradeManagement.com;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
-
-@Getter
-@Setter
-@AllArgsConstructor
 
 public class GradeHistory {
     private String reason;
-    private LocalDateTime dateTime;
+    private Instant dateTime;
     private double value;
 
-    public GradeHistory(String reason, LocalDateTime dateTime, double value) {
+    public String getReason() {
+        return reason;
+    }
+
+    public Instant getDateTime() {
+        return dateTime;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public GradeHistory(String reason, Instant dateTime, double value) {
+
     }
 
 }

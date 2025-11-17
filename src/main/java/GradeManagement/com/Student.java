@@ -1,19 +1,25 @@
 package GradeManagement.com;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.time.LocalDate;
 
-@Getter
-@Setter
 
 public class Student extends Users {
     private Group group;
     private Tutor tutor;
 
-    public Student(int id, String firstName, String lastName, String dateOfBirth, String email, String phoneNumber,Group group,Tutor tutor) {
-        super(id, firstName, lastName, dateOfBirth, email, phoneNumber);
+    public Student(int id, String firstName, String lastName, LocalDate BirthDate, String email, String phoneNumber,Group group,Tutor tutor) {
+        super(id, firstName, lastName, BirthDate, email, phoneNumber);
         this.group = group;
         this.tutor = tutor;
-    }}
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public Tutor getTutor() {
+        return tutor;
+    }
+}
 
 

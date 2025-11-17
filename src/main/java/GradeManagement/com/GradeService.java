@@ -1,23 +1,28 @@
 package GradeManagement.com;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.time.Instant;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 
-@Getter
-@Setter
-@AllArgsConstructor
-
-
-public class GradeService {
-    public void getExamGrade(Exam exam, Student student, Instant t){
+public class GradeService{
 
 
+    private List<Grades> grades;
+
+    public double getExamGrade(Exam exam, Student student, Instant t){
+
+        return grades.stream()
+                .filter(grade ->grade.getStudent().getId() == student.getId())
+                .filter(grade-> grade.getExam().getId() == exam.getId())
+                .flatMap(grade ->grade.getGradeHistory().stream())
+                .filter(time -> time.getDateTime().isBefore(t))
+                .max(Comparator.comparing(GradeHistory::getDateTime))
+                .map(GradeHistory::getValue)
+                .orElse(0.0);
     }
 
-    public  void getCourseGrades(Course course,Student student,Instant t){
-
+    public double getCourseGrades(Course course,Student student,Instant t){
+    return 0 ;
     }
 }

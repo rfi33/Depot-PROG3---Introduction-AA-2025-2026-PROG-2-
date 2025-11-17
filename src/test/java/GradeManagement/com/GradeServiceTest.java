@@ -20,29 +20,24 @@ class GradeServiceTest {
     private Exam exam1;
     private Exam exam2;
 
-
     @BeforeEach
-     void setUp() {
+    void setUp() {
         gradeService = new GradeService();
 
-         List<Student> students = new ArrayList<>();
-         Group L1 = new Group(students,"L1");
+        List<Student> students = new ArrayList<>();
+        Group L1 = new Group(students,"L1");
 
-         Tutor Koto = new Tutor(1, "Rakoto", "Be", LocalDate.of(1980, 5, 12), "Rakoto@mail.com", "+261340800422", "Father");
+        Tutor Koto = new Tutor(1, "Rakoto", "Be", LocalDate.of(1980, 5, 12), "Rakoto@mail.com", "+261340800422", "Father");
 
-         Student student = new Student(1, "Rakoto", "Soa", LocalDate.of(2003, 2, 22), "Rasoa@gmail.com", "+261348200145", L1, Koto);
+        Student student = new Student(1, "Rakoto", "Soa", LocalDate.of(2003, 2, 22), "Rasoa@gmail.com", "+261348200145", L1, Koto);
 
-         Teacher teacher = new Teacher(1, "Ratsimba", "Kolo", LocalDate.of(1985, 10, 30), "Ratsimba@gmail.com", "+261381205022", Teacher.SPECIALITY.BACKEND);
+        Teacher teacher = new Teacher(1, "Ratsimba", "Kolo", LocalDate.of(1985, 10, 30), "Ratsimba@gmail.com", "+261381205022", Teacher.SPECIALITY.BACKEND);
 
-         Course prog2 = new Course(1, "PROG2", 6, teacher);
+        Course prog2 = new Course(1, "PROG2", 6, teacher);
 
-         GradeHistory gradeHistory1 = new GradeHistory("primary grade",Instant.parse("2025-05-30T11:00:00Z"),13.00);
-
-         Exam exam1 = new Exam(1, "First exam", prog2, 3,Instant.parse("2025-05-20T10:00:00Z"));
-         Exam exam2 = new Exam(1,"Final exam",prog2,3,Instant.parse("2025-06-30T08:00:00Z"));
-     }
-
-
+        Exam exam1 = new Exam(1, "First exam", prog2, 3,Instant.parse("2025-05-20T10:00:00Z"));
+        Exam exam2 = new Exam(1,"Final exam",prog2,3,Instant.parse("2025-06-30T08:00:00Z"));
+    }
     @Test
     void getCourseGrades() {
         List<GradeHistory> gradeHistory1 = new ArrayList<>();
