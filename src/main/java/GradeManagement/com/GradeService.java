@@ -23,6 +23,15 @@ public class GradeService{
     }
 
     public double getCourseGrades(Course course,Student student,Instant t){
-    return 0 ;
+
+        return  grades.stream()
+                .filter(grade -> grade.getStudent().getId() == student.getId())
+                .filter(grade -> grade.getExam().getCourse().getId() == course.getId())
+                .mapToDouble(grade -> {
+                    double examGrade = getExamGrade(grade.getExam(),student,t);
+                    double courseCoef = grade.getExam().getCourse().getCredits();
+                    return examGrade * courseCoef;
+                })
+                .sum();
     }
 }
